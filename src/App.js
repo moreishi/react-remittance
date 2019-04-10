@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Home from './components/Home/Home';
+import Signup from './components/Signup/Signup';
+import Login from './components/Login/Login';
+import Recovery from './components/Recovery/Recovery';
+import Agreement from './components/Agreement/Agreement';
+
 import './App.css';
+import Navigation from "./components/Navigation/Navigation";
+
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        <BrowserRouter>
+            <div>
+                <Navigation />
+                <Route exact path="/" component={Home} />
+                <Route path="/user-agreement" component={Agreement} />
+                <Route path="/login" component={Login} />
+                <Route path="/signup" component={Signup} />
+                <Route path="/password-recovery" component={Recovery} />
+            </div>
+        </BrowserRouter>
     );
   }
 }
